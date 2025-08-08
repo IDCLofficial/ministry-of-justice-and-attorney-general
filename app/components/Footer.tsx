@@ -1,9 +1,10 @@
+"use client"
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { ChangeEvent, FormEvent, useCallback, useState } from 'react'
 import AnimatedEntrance from '../../components/AnimatedEntrance'
 import { ANIMATION_PRESETS, STAGGER_DELAYS } from '../../utils/constants/animations'
-import { CONTACT_INFO, MINISTRY_INFO } from '../../utils/constants/navigation'
+import { MINISTRY_INFO } from '../../utils/constants/navigation'
 import toast from 'react-hot-toast'
 
 export default function Footer() {
