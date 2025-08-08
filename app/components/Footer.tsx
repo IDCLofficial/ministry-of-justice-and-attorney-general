@@ -1,17 +1,52 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { ChangeEvent, FormEvent, useCallback, useState } from 'react'
 import AnimatedEntrance from '../../components/AnimatedEntrance'
 import { ANIMATION_PRESETS, STAGGER_DELAYS } from '../../utils/constants/animations'
 import { CONTACT_INFO, MINISTRY_INFO } from '../../utils/constants/navigation'
+import toast from 'react-hot-toast'
 
 export default function Footer() {
+
+    const [email, setEmail] = useState("");
+    const [emailError, setEmailError] = useState<string | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleEmailChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value);
+        if (emailError) setEmailError(null);
+    }, [emailError]);
+
+    const handleSubscribe = useCallback(async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const isValid = /\S+@\S+\.\S+/.test(email.trim());
+        if (!email.trim()) {
+            setEmailError("Email is required");
+            toast.error("Please enter your email.");
+            return;
+        }
+        if (!isValid) {
+            setEmailError("Enter a valid email");
+            toast.error("Enter a valid email.");
+            return;
+        }
+        setIsSubmitting(true);
+        try {
+            await new Promise((r) => setTimeout(r, 900));
+            toast.success("Subscribed successfully!");
+            setEmail("");
+            setEmailError(null);
+        } finally {
+            setIsSubmitting(false);
+        }
+    }, [email]);
+
     return (
         <>
             {/* Newsletter Section */}
             <AnimatedEntrance {...ANIMATION_PRESETS.SECTION_FADE_IN}>
                 <section className="py-8 sm:py-12 md:py-16 bg-white -mt-6 sm:-mt-8 md:-mt-10 -mb-16 sm:-mb-24 md:-mb-32 px-4 sm:px-6 lg:px-20">
-                <div className="max-w-6xl mx-auto">
+                    <div className="max-w-6xl mx-auto">
                         <div className="rounded-xl sm:rounded-2xl px-4 py-4 sm:px-6 sm:py-5 md:px-8 md:py-6 lg:px-12 relative overflow-hidden group hover:shadow-2xl transition-all duration-500">
                             <div className="absolute top-0 left-0 w-full h-full transition-all duration-500 group-hover:scale-105" style={{
                                 background: "linear-gradient(90deg, #A1FFCE 0%, #FAFFD1 100%)",
@@ -24,10 +59,10 @@ export default function Footer() {
                                 <AnimatedEntrance {...ANIMATION_PRESETS.TEXT_FADE_LEFT} delay={200}>
                                     <div className="text-center md:text-left">
                                         <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight">
-                                        Partner in Legal Excellence & Community Justice
+                                            Partner in Legal Excellence & Community Justice
                                         </h2>
                                         <p className="max-w-lg opacity-70 text-sm sm:text-base leading-relaxed">
-                                        Collaborate with us to enhance court efficiency, promote alternative dispute resolution, and bring justice closer to every community in Imo State.
+                                            Collaborate with us to enhance court efficiency, promote alternative dispute resolution, and bring justice closer to every community in Imo State.
                                         </p>
                                     </div>
                                 </AnimatedEntrance>
@@ -74,17 +109,17 @@ export default function Footer() {
                         {/* Quick Links */}
                         <AnimatedEntrance {...ANIMATION_PRESETS.CARD_FADE_UP} delay={STAGGER_DELAYS.MEDIUM[1]}>
                             <div>
-                                    <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 md:mb-6 text-white relative">
-                                        Quick Links
+                                <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 md:mb-6 text-white relative">
+                                    Quick Links
                                     <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></div>
-                                    </h4>
-                                    <ul className="space-y-2 sm:space-y-3">
+                                </h4>
+                                <ul className="space-y-2 sm:space-y-3">
                                     <li><Link href="/about" className="text-gray-300 hover:text-green-300 hover:translate-x-1 transition-all duration-300 text-sm sm:text-base inline-block">About Us</Link></li>
                                     <li><Link href="/department" className="text-gray-300 hover:text-green-300 hover:translate-x-1 transition-all duration-300 text-sm sm:text-base inline-block">Departments & Agencies</Link></li>
                                     <li><Link href="/services" className="text-gray-300 hover:text-green-300 hover:translate-x-1 transition-all duration-300 text-sm sm:text-base inline-block">Services</Link></li>
                                     <li><Link href="/projects" className="text-gray-300 hover:text-green-300 hover:translate-x-1 transition-all duration-300 text-sm sm:text-base inline-block">Projects</Link></li>
                                     <li><Link href="/news" className="text-gray-300 hover:text-green-300 hover:translate-x-1 transition-all duration-300 text-sm sm:text-base inline-block">News</Link></li>
-                                    </ul>
+                                </ul>
                             </div>
                         </AnimatedEntrance>
 
@@ -105,44 +140,36 @@ export default function Footer() {
                         {/* Newsletter Signup */}
                         <AnimatedEntrance {...ANIMATION_PRESETS.CARD_FADE_UP} delay={STAGGER_DELAYS.MEDIUM[3]}>
                             <div>
-                                    <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 md:mb-6 text-white">Stay Updated – Subscribe to Our Newsletter</h4>
-                                    <div className="space-y-3 sm:space-y-4">
-                                        <input
-                                            type="email"
-                                            placeholder="Enter your email"
-                                            className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 focus:bg-white/15 transition-all duration-300 text-sm sm:text-base"
-                                        />
-                                    <button className="cursor-pointer w-full bg-green-500 hover:bg-green-600 hover:scale-105 active:scale-95 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
-                                            Subscribe
-                                        </button>
-                                    </div>
-                                    <div className="mt-4 sm:mt-6 space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-300 grid">
-                                        <a href={`tel:${CONTACT_INFO.phone}`} className="hover:text-yellow-300 transition-colors duration-300 cursor-pointer flex items-center">
-                                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                            </svg>
-                                            {CONTACT_INFO.phone}
-                                        </a>
-                                        <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-yellow-300 transition-colors duration-300 cursor-pointer flex items-center">
-                                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                            </svg>
-                                            {CONTACT_INFO.email}
-                                        </a>
-                                        <p className="leading-relaxed hover:text-yellow-300 transition-colors duration-300 cursor-pointer flex items-start">
-                                            <svg className="w-4 h-4 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                            </svg>
-                                            {CONTACT_INFO.address}
-                                        </p>
-                                        <p className="leading-relaxed text-gray-300 flex items-center">
-                                            <svg className="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                            </svg>
-                                            {CONTACT_INFO.workingHours}
-                                        </p>
-                                    </div>
+                                <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 md:mb-6 text-white">Signup to Our Newsletter</h4>
+                                <form onSubmit={handleSubscribe} noValidate className="space-y-3 sm:space-y-4">
+                                    <input
+                                        type="email"
+                                        name="newsletter-email"
+                                        aria-invalid={Boolean(emailError)}
+                                        aria-describedby={emailError ? 'newsletter-email-error' : undefined}
+                                        value={email}
+                                        onChange={handleEmailChange}
+                                        placeholder="Myemail@gmail.com"
+                                        className={`w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-white/10 border text-white placeholder-gray-300 focus:outline-none focus:ring-2 transition-all duration-300 text-sm sm:text-base ${emailError ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-white/20 focus:ring-green-500 focus:border-green-500 focus:bg-white/15'}`}
+                                    />
+                                    {emailError && (
+                                        <p id="newsletter-email-error" className="text-red-300 text-xs sm:text-sm">{emailError}</p>
+                                    )}
+                                    <button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className={`cursor-pointer w-full bg-green-500 hover:bg-green-600 hover:scale-105 active:scale-95 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 shadow-lg hover:shadow-xl ${isSubmitting ? 'opacity-80 cursor-not-allowed' : ''}`}
+                                    >
+                                        {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                                    </button>
+                                </form>
+                                <div className="mt-4 sm:mt-6 space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-300">
+                                    <a href="tel:" className="hover:text-green-300 transition-colors duration-300 cursor-pointer">[Official phone number to be provided]</a>
+                                    <a href="mailto:commissioner.ind.solid.min@gmail.com" className="hover:text-green-300 transition-colors duration-300 cursor-pointer">commissioner.ind.solid.min@gmail.com</a>
+                                    <p className="leading-relaxed hover:text-gray-200 transition-colors duration-300">
+                                        Ministry of Environment and Sanitation, State Secretariat, Owerri, Imo State
+                                    </p>
+                                </div>
                             </div>
                         </AnimatedEntrance>
                     </div>
