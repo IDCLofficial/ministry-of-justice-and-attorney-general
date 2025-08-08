@@ -1,0 +1,142 @@
+{
+  "ministry": {
+    "name": "Ministry of Justice & Attorney General",
+    "state": "Imo State"
+  },
+  "website_sections": {
+    "header_branding": {
+      "hero_banner": {
+        "main_caption": "Justice that Works. Law that Serves.",
+        "subheadline": "Upholding Rights. Advancing Justice. Empowering Imo."
+      }
+    },
+    "homepage": {
+      "welcome_message": {
+        "title": "Welcome Message (Homepage)",
+        "content": "Welcome to the official website of the Imo State Ministry of Justice and Attorney General. Building on the solid foundation laid by our predecessors, we are committed to reforming justice delivery through innovation, legal integrity, and digital transformation. Our goal is to ensure that justice is accessible, timely, and people-centered across Imo State. This journey requires collaboration. I thank our colleagues, partners, and citizens for their continued support as we work to uphold the rule of law and build a stronger, more responsive justice system for future generations."
+      },
+      "brief_about": {
+        "title": "Brief About the Ministry (About Us Section)",
+        "content": "The Imo State Ministry of Justice stands as the legal backbone of governance, committed to upholding the rule of law, promoting justice, and safeguarding the rights of all citizens. Established in 1976 alongside the creation of Imo State, the Ministry operates through a robust judicial framework comprising the High Court of Justice, the Customary Court of Appeal, and the Judicial Service Commission. Under the leadership of the Chief Judge of Imo State, the judiciary administers justice across 15 High Court Divisions, 27 Magisterial Districts, and 47 Customary Courts—ensuring accessible legal services across all local government areas. Headquartered at the state-of-the-art Justice Chukwudifu Oputa High Court Complex in New Owerri, the Ministry continues to advance judicial reforms, professional integrity, and equitable access to justice for every Imolite."
+      }
+    },
+    "about_us": {
+      "vision_statement": "To uphold justice, fairness, and the rule of law in Imo State through a transparent, efficient, and technology-driven judicial system that serves all citizens equally.",
+      "mission_statement": "To deliver timely and impartial justice, promote legal reform, and ensure the protection of individual rights through an independent judiciary and an accountable Ministry of Justice.",
+      "hierarchy": {
+        "structure": [
+          "Chief Judge of Imo State – Head of Courts and Chairman, Judicial Service Commission",
+          "Judicial Service Commission Members – Comprising legal and public officers",
+          "Registrar of the High Court – Oversees administrative functions of the court system",
+          "President, Customary Court of Appeal",
+          "Heads of the Magistrates' Courts & Customary Courts across 27 LGAs"
+        ]
+      },
+      "departments": [
+        "Accounts",
+        "Personnel",
+        "Planning Research & Statistics",
+        "Litigation Department",
+        "Projects",
+        "Probate Registry",
+        "High Court Registry",
+        "Magistrate Registry",
+        "Family Courts Registry",
+        "Secret Registry",
+        "Transport Division",
+        "Library",
+        "Procurement And Stores",
+        "ICT",
+        "Environmental Sanitation"
+      ],
+      "strategic_goals": [
+        "Justice Access & Efficiency – Expand access to justice by improving court infrastructure, digital case management, and legal aid services",
+        "Judicial Reform & Innovation – Drive reforms that modernize court procedures, introduce automation, and promote alternative dispute resolution (ADR)",
+        "Institutional Capacity – Strengthen institutional performance by training staff, upgrading legal tools, and fostering cross-agency collaboration",
+        "Transparency & Accountability – Promote openness in legal processes through digitized records, case tracking, and stakeholder engagement",
+        "Human Rights Protection – Ensure constitutional safeguards are upheld for all individuals, especially vulnerable groups",
+        "Law Reform & Policy Development – Review outdated laws, propose modern legal frameworks, and promote public legal education"
+      ]
+    },
+    "departments_agencies": {
+      "commitment_message": "Every department under this Ministry is fully committed to serving you with integrity and dedication. From Waste Management to Environmental Health, Climate Change, Forestry, and Sanitation, each unit is working tirelessly to ensure a cleaner, safer, and healthier environment. We are actively addressing challenges like flooding, pollution, and poor waste disposal through strategic interventions and public engagement. Your wellbeing is our priority. With your cooperation and our commitment, we will build a greener and more sustainable Imo State. Together, we can make a lasting impact.",
+      "departments": {
+        "public_prosecution": "Leads the prosecution of criminal cases on behalf of the state. Offers legal guidance to law enforcement agencies and ensures that justice is served in accordance with due process.",
+        "civil_litigation": "Defends the state government in civil and constitutional matters. Handles disputes involving contracts, land, and torts, and protects the legal interests of the government in court.",
+        "legal_drafting": "Prepares and vets executive bills, legal documents, and legislative instruments for the state. Ensures clarity, precision, and alignment of all legal texts with constitutional standards.",
+        "citizens_rights": "Provides access to justice for vulnerable and indigent members of society. Handles public complaints, human rights violations, and legal aid interventions across the state.",
+        "law_reform": "Analyzes existing laws and recommends timely updates and reforms to reflect evolving legal, social, and economic realities. Collaborates with stakeholders on legislative modernization.",
+        "administration_human_resources": "Manages the Ministry's workforce. Oversees recruitment, postings, promotions, training, and general welfare of staff to ensure effective human capital management.",
+        "finance_accounts": "Handles the Ministry's financial operations, including budget planning, fund disbursement, expenditure tracking, and compliance with government accounting standards.",
+        "planning_research_statistics": "Supports policy development through data-driven research. Tracks program performance, monitors KPIs, and generates reports to aid strategic decision-making.",
+        "judicial_services_coordination": "Serves as the operational link between the Ministry and the judiciary. Coordinates programs, monitors compliance, and facilitates institutional synergy across justice delivery platforms."
+      },
+      "agencies": [
+        "Imo State Judicial Service Commission (JSC)",
+        "High Court of Justice, Imo State",
+        "Customary Court of Appeal, Imo State",
+        "Magistrates' Courts",
+        "Customary Courts",
+        "Imo State Directorate for Citizens' Rights"
+      ],
+      "partners": [
+        "Federal Ministry of Justice",
+        "Nigerian Bar Association (NBA)",
+        "Legal Aid Council of Nigeria",
+        "National Judicial Council (NJC)",
+        "International Development Law Organization (IDLO)",
+        "European Union",
+        "United Nations Office on Drugs and Crime (UNODC)",
+        "International Federation of Women Lawyers (FIDA)",
+        "Non-Governmental Organizations (NGOs)",
+        "Civil Society Organizations (CSOs)",
+        "Community Justice and ADR Centres",
+        "Academic Institutions and Law Faculties"
+      ]
+    },
+    "projects": {
+      "description": "There will be an updated list regularly on the projects of the ministry and the projects (IF ANY) with the pictures provided on the ministry personnels in the work site.",
+      "current_projects": [
+        "Judiciary Automation Project - Ongoing digital transformation of court processes, including e-filing, digital case tracking, and improved data management to enhance transparency and efficiency",
+        "Renovation and Upgrade of Court Facilities - Rehabilitation of dilapidated court buildings and infrastructure across various judicial divisions to provide conducive environments for justice delivery",
+        "Capacity Building and Staff Training - Continuous legal education and digital skills training for judicial officers and administrative staff to strengthen service delivery",
+        "Expansion of Customary Courts - Establishment and operationalization of more Customary Courts in underserved communities to improve access to grassroots justice",
+        "Community Sensitization on Access to Justice - Outreach programs focused on educating citizens on their legal rights, justice procedures, and available legal aid",
+        "Alternative Dispute Resolution (ADR) Enhancement - Strengthening the ADR framework to reduce case backlog through mediation and non-litigation settlements",
+        "Deployment of Court Recording and Transcription Equipment - Installation of modern recording systems in select courts to improve documentation and expedite judgment writing",
+        "Judicial Staff Welfare and Incentive Scheme - Projects focused on improving the welfare of judicial workers, including accommodation, transport, and performance incentives"
+      ]
+    },
+    "news": {
+      "newsletter_signup": {
+        "title": "Stay Informed. Stay Empowered.",
+        "description": "Subscribe to our newsletter for updates on judicial reforms, legal awareness campaigns, court news, and public service announcements. Be the first to know how justice is evolving in Imo State.",
+        "email_placeholder": "info@imojudiciary.gov.ng",
+        "signup_process": "In order to use our new automated services, you will be required to register.",
+        "button_text": "SIGN UP HERE"
+      }
+    },
+    "contact_us": {
+      "description": "A picture of the ministry's building will be the first sight to behold then below it will be the following:",
+      "greeting": "Let's talk",
+      "contact_information": {
+        "address": "Justice Oputa High Court Complex, New Owerri (off Port-Harcourt Road), Owerri",
+        "phone": "+2347046242007",
+        "email": "info@imojudiciary.gov.ng"
+      },
+      "contact_form": {
+        "title": "SEND US A MESSAGE",
+        "fields": [
+          "NAME",
+          "COMPANY",
+          "PHONE",
+          "EMAIL",
+          "SUBJECT",
+          "MESSAGE OR COMPLAIN"
+        ],
+        "button_text": "Send Message"
+      },
+      "map_integration": "A link with the address of the ministry's location on the map will be the last section of the CONTACT US, to enable those who do not know the location directly from their location to locate the place."
+    }
+  }
+}
