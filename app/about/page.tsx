@@ -88,8 +88,42 @@ export default function About() {
                 </div>
             </section>
 
-            {/* Core Responsibilities Section */}
+            {/* Attorney General's Profile Section */}
             <section className="py-12 sm:py-16 md:py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+                        <div className="order-2 lg:order-1">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
+                                Hon. [Attorney General&apos;s Name], SAN
+                            </h2>
+                            <p className="text-lg sm:text-xl text-green-600 font-semibold mb-4 sm:mb-6">
+                                Honorable Attorney General & Commissioner for Justice
+                            </p>
+                            <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-4 sm:mb-6">
+                                A distinguished legal luminary with over two decades of experience in legal practice and public service. As the Chief Law Officer of Imo State, the Honorable Attorney General is committed to upholding the rule of law, ensuring justice is accessible to all citizens, and implementing judicial reforms that enhance the efficiency and transparency of the state&apos;s legal system.
+                            </p>
+                            <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-6 sm:mb-8">
+                                Under their leadership, the Ministry of Justice has prioritized judicial reforms, legal system modernization, and human rights protection. The Attorney General has been instrumental in driving policy changes that strengthen the state&apos;s legal framework and improve access to justice for all residents of Imo State.
+                            </p>
+                            {/* <button className="bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base font-semibold transition-colors">
+                    Read Full Bio
+                </button> */}
+                        </div>
+                        <div className="order-1 lg:order-2">
+                            <Image
+                                src="/assets/commissioner-local-govt.png"
+                                alt="Hon. (Mrs.) Rubby Emele - Honourable Commissioner"
+                                width={500}
+                                height={600}
+                                className="rounded-lg shadow-lg w-full h-auto"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Core Responsibilities Section */}
+            <section id="coreResponsibilities" className="py-12 sm:py-16 md:py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
                     <div className="text-center mb-8 sm:mb-12 md:mb-16">
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
@@ -193,36 +227,42 @@ export default function About() {
                 </div>
             </section>
 
-            {/* Attorney General's Profile Section */}
-            <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
+            {/* Strategic Goals Section */}
+            <section className="py-16 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
-                        <div className="order-2 lg:order-1">
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-                                Hon. [Attorney General&apos;s Name], SAN
-                            </h2>
-                            <p className="text-lg sm:text-xl text-green-600 font-semibold mb-4 sm:mb-6">
-                                Honorable Attorney General & Commissioner for Justice
-                            </p>
-                            <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-4 sm:mb-6">
-                                A distinguished legal luminary with over two decades of experience in legal practice and public service. As the Chief Law Officer of Imo State, the Honorable Attorney General is committed to upholding the rule of law, ensuring justice is accessible to all citizens, and implementing judicial reforms that enhance the efficiency and transparency of the state&apos;s legal system.
-                            </p>
-                            <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-6 sm:mb-8">
-                                Under their leadership, the Ministry of Justice has prioritized judicial reforms, legal system modernization, and human rights protection. The Attorney General has been instrumental in driving policy changes that strengthen the state&apos;s legal framework and improve access to justice for all residents of Imo State.
-                            </p>
-                            {/* <button className="bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base font-semibold transition-colors">
-                                Read Full Bio
-                            </button> */}
-                        </div>
-                        <div className="order-1 lg:order-2">
-                            <Image
-                                src="/assets/commissioner-local-govt.png"
-                                alt="Hon. (Mrs.) Rubby Emele - Honourable Commissioner"
-                                width={500}
-                                height={600}
-                                className="rounded-lg shadow-lg w-full h-auto"
-                            />
-                        </div>
+                    <div className="text-center mb-10">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Strategic Objectives</h2>
+                        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                            The Ministry is committed to these key strategic objectives to strengthen the justice system, uphold the rule of law, and ensure access to justice for all citizens of Imo State.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {[
+                            "Justice Access & Efficiency: Expand access to justice through improved court infrastructure and digital case management.",
+                            "Judicial Reform & Innovation: Modernize court procedures and promote alternative dispute resolution.",
+                            "Institutional Capacity: Strengthen performance through staff training and technology upgrades.",
+                            "Transparency & Accountability: Promote openness in legal processes through digitized records.",
+                            "Human Rights Protection: Uphold constitutional safeguards for all individuals.",
+                            "Law Reform: Review and update outdated laws and legal frameworks.",
+                            "Digital Transformation: Implement e-filing and digital case tracking systems.",
+                            "Community Legal Education: Increase public awareness of legal rights and procedures.",
+                            "Judicial Infrastructure: Upgrade court facilities and equipment statewide.",
+                            "Professional Development: Continuous training for legal and judicial personnel."
+                        ].map((goal, index) => (
+                            <AnimatedEntrance
+                                key={index}
+                                {...ANIMATION_PRESETS.CARD_FADE_UP}
+                                delay={0.1 * index}
+                            >
+                                <div className="flex items-start p-4 bg-white rounded-lg shadow-sm">
+                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-4">
+                                        <span className="text-green-600 font-semibold">{index + 1}</span>
+                                    </div>
+                                    <p className="text-gray-700">{goal}</p>
+                                </div>
+                            </AnimatedEntrance>
+                        ))}
                     </div>
                 </div>
             </section>

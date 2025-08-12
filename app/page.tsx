@@ -117,7 +117,7 @@ export default function Home() {
                 <p className="text-sm text-gray-600 mb-3 sm:mb-4 leading-relaxed">
                   Modernizing court procedures, introducing automation, and promoting alternative dispute resolution to enhance access to justice.
                 </p>
-                <button className="text-green-500 font-medium text-sm hover:text-green-600 transition-colors">Learn More →</button>
+                <Link href="/about#coreResponsibilities"><button className="text-green-500 font-medium text-sm hover:text-green-600 transition-colors">Learn More →</button></Link>
               </div>
             </AnimatedEntrance>
             
@@ -130,7 +130,7 @@ export default function Home() {
                 <p className="text-sm text-gray-600 mb-3 sm:mb-4 leading-relaxed">
                   Upholding constitutional safeguards and ensuring equal protection under the law for all citizens of Imo State.
                 </p>
-                <button className="text-green-500 font-medium text-sm hover:text-green-600 transition-colors">Learn More →</button>
+                <Link href="/about#coreResponsibilities"><button className="text-green-500 font-medium text-sm hover:text-green-600 transition-colors">Learn More →</button></Link>
               </div>
             </AnimatedEntrance>
             
@@ -143,7 +143,7 @@ export default function Home() {
                 <p className="text-sm text-gray-600 mb-3 sm:mb-4 leading-relaxed">
                   Enhancing public legal awareness and providing continuous training for judicial officers and legal practitioners.
                 </p>
-                <button className="text-green-500 font-medium text-sm hover:text-green-600 transition-colors">Learn More →</button>
+                <Link href="/about#coreResponsibilities"><button className="text-green-500 font-medium text-sm hover:text-green-600 transition-colors">Learn More →</button></Link>
               </div>
             </AnimatedEntrance>
           </div>

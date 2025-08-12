@@ -148,46 +148,6 @@ export default function Projects() {
                     </div>
                 </div>
             </section>
-
-            {/* Strategic Goals Section */}
-            <section className="py-16 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
-                    <div className="text-center mb-10">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Strategic Objectives</h2>
-                        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                            The Ministry is committed to these key strategic objectives to strengthen the justice system, uphold the rule of law, and ensure access to justice for all citizens of Imo State.
-                        </p>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {[
-                            "Justice Access & Efficiency: Expand access to justice through improved court infrastructure and digital case management.",
-                            "Judicial Reform & Innovation: Modernize court procedures and promote alternative dispute resolution.",
-                            "Institutional Capacity: Strengthen performance through staff training and technology upgrades.",
-                            "Transparency & Accountability: Promote openness in legal processes through digitized records.",
-                            "Human Rights Protection: Uphold constitutional safeguards for all individuals.",
-                            "Law Reform: Review and update outdated laws and legal frameworks.",
-                            "Digital Transformation: Implement e-filing and digital case tracking systems.",
-                            "Community Legal Education: Increase public awareness of legal rights and procedures.",
-                            "Judicial Infrastructure: Upgrade court facilities and equipment statewide.",
-                            "Professional Development: Continuous training for legal and judicial personnel."
-                        ].map((goal, index) => (
-                            <AnimatedEntrance 
-                                key={index} 
-                                {...ANIMATION_PRESETS.CARD_FADE_UP} 
-                                delay={0.1 * index}
-                            >
-                                <div className="flex items-start p-4 bg-white rounded-lg shadow-sm">
-                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-4">
-                                        <span className="text-green-600 font-semibold">{index + 1}</span>
-                                    </div>
-                                    <p className="text-gray-700">{goal}</p>
-                                </div>
-                            </AnimatedEntrance>
-                        ))}
-                    </div>
-                </div>
-            </section>
         </div>
     );
 }
