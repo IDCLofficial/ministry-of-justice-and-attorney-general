@@ -292,10 +292,6 @@ export default function About() {
                             <div className="p-6">
                                 <h3 className="text-xl font-bold text-gray-900">[Attorney General&apos;s Name]</h3>
                                 <p className="text-green-700 font-medium mt-1">Hon. Attorney General & Commissioner for Justice</p>
-                                <p className="text-sm text-gray-500 mt-2">Sworn in: [Date]</p>
-                                <p className="mt-4 text-gray-600">
-                                    As the Chief Law Officer of Imo State, leads the state&apos;s legal team, provides legal advice to the government, and oversees the administration of justice across all courts and legal institutions in the state.
-                                </p>
                             </div>
                         </div>
 
@@ -313,9 +309,6 @@ export default function About() {
                             <div className="p-6">
                                 <h3 className="text-xl font-bold text-gray-900">Permanent Secretary&apos;s Name</h3>
                                 <p className="text-green-700 font-medium mt-1">Permanent Secretary</p>
-                                <p className="mt-4 text-gray-600">
-                                    Provides administrative leadership and ensures the effective implementation of the Ministry&apos;s policies, programs, and judicial reforms across all departments and agencies under the Ministry of Justice.
-                                </p>
                             </div>
                         </div>
                     </div>
