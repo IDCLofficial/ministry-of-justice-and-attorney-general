@@ -29,7 +29,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
             <AnimatedEntrance {...ANIMATION_PRESETS.IMAGE_FADE_UP} className="order-2 lg:order-1">
               <Image
-                src="/assets/local-government.png"
+                src="/photos/Intro - Ministry of Justice.jpeg"
                 alt="Local government administration and community development"
                 width={600}
                 height={400}
@@ -167,11 +167,11 @@ export default function Home() {
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
             {[
-              { name: 'Nigerian Bar Association', logo: '/assets/partners/nba-logo.png' },
-              { name: 'Legal Aid Council', logo: '/assets/partners/legal-aid-logo.png' },
-              { name: 'National Judicial Council', logo: '/assets/partners/njc-logo.png' },
-              { name: 'International Federation of Women Lawyers', logo: '/assets/partners/fida-logo.png' },
-              { name: 'UN Office on Drugs and Crime', logo: '/assets/partners/unodc-logo.png' },
+              { name: 'Nigerian Bar Association', logo: '/photos/nba-logo-1.png' },
+              { name: 'Legal Aid Council', logo: '/photos/legal-aid-logo.png' },
+              { name: 'National Judicial Council', logo: '/photos/njc-logo.jpg' },
+              { name: 'International Federation of Women Lawyers', logo: '/photos/fida-logo.jpg' },
+              { name: 'UN Office on Drugs and Crime', logo: '/photos/unodc-logo.png' },
             ].map((partner, index) => (
               <AnimatedEntrance 
                 key={partner.name}
@@ -185,7 +185,7 @@ export default function Home() {
                       src={partner.logo}
                       alt={partner.name}
                       fill
-                      className="object-contain"
+                      className="w-full h-auto object-contain aspect-[2/1]"
                     />
                   </div>
                 </div>

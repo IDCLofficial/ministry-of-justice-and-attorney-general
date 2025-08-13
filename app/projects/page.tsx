@@ -5,6 +5,7 @@ import { PROJECTS_STATISTICS } from "../../utils/constants/statistics";
 import { HERO_CONFIGS } from "../../utils/constants/heroSections";
 import { ANIMATION_PRESETS, STAGGER_DELAYS } from "../../utils/constants/animations";
 import { FaUsers, FaBuilding, FaGavel, FaHandshake, FaBook } from "react-icons/fa6";
+import Image from "next/image";
 
 // Local Government project icons mapping
 const PROJECT_ICONS = {
@@ -29,7 +30,9 @@ const JUSTICE_PROJECTS = [
         location: "Statewide",
         category: "Digital Transformation",
         status: "Ongoing",
-        partners: "ICT Department, Judiciary"
+        partners: "ICT Department, Judiciary",
+        imageSrc: "/photos/judiciary-automation - Ministry of Justice.jpg",
+        
     },
     {
         number: 2,
@@ -38,7 +41,8 @@ const JUSTICE_PROJECTS = [
         location: "Multiple Locations",
         category: "Infrastructure",
         status: "Ongoing",
-        partners: "Ministry of Works, Judiciary"
+        partners: "Ministry of Works, Judiciary",
+        imageSrc: "/photos/court-facilities-renovation - Ministry of Justice.webp",
     },
     {
         number: 3,
@@ -47,7 +51,8 @@ const JUSTICE_PROJECTS = [
         location: "Statewide",
         category: "Capacity Building",
         status: "Ongoing",
-        partners: "Judicial Institute, NBA"
+        partners: "Judicial Institute, NBA",
+        imageSrc: "/photos/judicial-capacity-building - Ministry of Justice.jpg",
     },
     {
         number: 4,
@@ -56,7 +61,8 @@ const JUSTICE_PROJECTS = [
         location: "Rural Communities",
         category: "Access to Justice",
         status: "Ongoing",
-        partners: "Local Governments, Traditional Rulers"
+        partners: "Local Governments, Traditional Rulers",
+        imageSrc: "/photos/customary-courts-expansion - Ministry of Justice.webp",
     },
     {
         number: 5,
@@ -65,7 +71,8 @@ const JUSTICE_PROJECTS = [
         location: "Statewide",
         category: "Public Education",
         status: "Ongoing",
-        partners: "NGOs, Civil Society Organizations"
+        partners: "NGOs, Civil Society Organizations",
+        imageSrc: "/photos/community-legal-awareness - Ministry of Justice.jpg",
     }
 ];
 
@@ -95,7 +102,6 @@ export default function Projects() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {JUSTICE_PROJECTS.map((project, index) => {
-                            const IconComponent = PROJECT_ICONS[project.number as keyof typeof PROJECT_ICONS];
                             return (
                                 <AnimatedEntrance 
                                     key={project.number} 
@@ -103,12 +109,14 @@ export default function Projects() {
                                     delay={STAGGER_DELAYS.MEDIUM[index % STAGGER_DELAYS.MEDIUM.length]}
                                 >
                                     <div className="bg-white border border-gray-200 h-full rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
-                                        <div className="h-48 bg-green-50 flex items-center justify-center">
-                                            {IconComponent && (
-                                                <div className="w-24 h-24 rounded-full bg-green-100 flex items-center justify-center">
-                                                    <IconComponent size="3em" color="#16a34a" />
-                                                </div>
-                                            )}
+                                        <div className="h-48 bg-green-50 flex items-center justify-center overflow-hidden">
+                                            <Image
+                                                src={project.imageSrc || '/assets/no-image-lg.jpg'}
+                                                alt={project.title}
+                                                width={400}
+                                                height={200}
+                                                className="object-cover w-full h-full"
+                                            />
                                         </div>
                                         <div className="p-6">
                                             <h3 className="text-lg font-bold text-gray-900 mb-4">

@@ -177,7 +177,7 @@ export default function Footer() {
 
                     <AnimatedEntrance {...ANIMATION_PRESETS.SECTION_FADE_IN} delay={600}>
                         <div className="border-t border-gray-600 mt-8 sm:mt-10 md:mt-12 pt-4 sm:pt-6 md:pt-8 text-center">
-                            <p className="text-gray-300 text-sm sm:text-base hover:text-white transition-colors duration-300">Imo State Government</p>
+                            <p className="text-gray-300 text-sm sm:text-base hover:text-white transition-colors duration-300">Powered by <span className="text-green-500 font-semibold">Imo State Digital City</span></p>
                         </div>
                     </AnimatedEntrance>
                 </div>

@@ -16,7 +16,7 @@ export default function About() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
                         <AnimatedEntrance {...ANIMATION_PRESETS.IMAGE_FADE_UP} className="order-2 lg:order-1">
                             <Image
-                                src="/assets/local-government.png"
+                                src="/photos/statue - Ministry of Justice.webp"
                                 alt="Local government administration and community development"
                                 width={600}
                                 height={400}
@@ -280,13 +280,13 @@ export default function About() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
                         {/* Attorney General & Commissioner for Justice */}
                         <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
-                            <div className="h-64 bg-gray-100 overflow-hidden">
+                            <div className="aspect-[3.8/4] bg-gray-100 overflow-hidden">
                                 <Image
                                     src="/assets/no-image.png"
                                     alt="Hon. Attorney General & Commissioner for Justice"
                                     width={400}
                                     height={400}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover object-top"
                                 />
                             </div>
                             <div className="p-6">
@@ -297,18 +297,18 @@ export default function About() {
 
                         {/* Permanent Secretary */}
                         <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
-                            <div className="h-64 bg-gray-100 overflow-hidden">
+                            <div className="aspect-[3.8/4] bg-gray-100 overflow-hidden">
                                 <Image
-                                    src="/assets/no-image.png"
-                                    alt="Permanent Secretary, Ministry of Justice"
+                                    src="/photos/Gloria Egwuagu. Solicitor General:Permanent Secretary. Ministry of Justice, Imo State.jpeg"
+                                    alt="Gloria Egwuagu. Solicitor General:Permanent Secretary. Ministry of Justice, Imo State"
                                     width={400}
                                     height={400}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover object-top"
                                 />
                             </div>
                             <div className="p-6">
-                                <h3 className="text-xl font-bold text-gray-900">Permanent Secretary&apos;s Name</h3>
-                                <p className="text-green-700 font-medium mt-1">Permanent Secretary</p>
+                                <h3 className="text-xl font-bold text-gray-900">Gloria Egwuagu</h3>
+                                <p className="text-green-700 font-medium mt-1">Solicitor General/Permanent Secretary.</p>
                             </div>
                         </div>
                     </div>
@@ -332,11 +332,11 @@ export default function About() {
                         </div>
                         <div>
                             <Image
-                                src="/assets/justice-building.jpg"
+                                src="/photos/Mace - Ministry of Justice.png"
                                 alt="Imo State High Court Complex"
                                 width={600}
                                 height={400}
-                                className="rounded-lg shadow-lg w-full h-auto"
+                                className="rounded-lg shadow-lg w-full h-auto object-contain aspect-[2/1]"
                             />
                         </div>
                     </div>

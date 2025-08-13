@@ -20,7 +20,7 @@ const HeroSection = ({
   title,
   subtitle,
   description,
-  backgroundImage = '/hero_section.png',
+  backgroundImage = '/photos/Justice - Ministry of Justice.jpg',
   backgroundGradient,
   height = 'medium',
   alignment = 'left',
@@ -67,7 +67,7 @@ const HeroSection = ({
             src={backgroundImage}
             alt="Hero background"
             fill
-            className="object-cover"
+            className="object-cover object-top"
             priority
           />
         </div>

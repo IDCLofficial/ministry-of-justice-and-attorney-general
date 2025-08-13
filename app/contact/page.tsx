@@ -132,7 +132,7 @@ export default function Contact() {
                                 </AnimatedEntrance>
 
                                 {/* Socials */}
-                                <AnimatedEntrance {...ANIMATION_PRESETS.CARD_FADE_UP} delay={STAGGER_DELAYS.MEDIUM[3]}>
+                                {/* <AnimatedEntrance {...ANIMATION_PRESETS.CARD_FADE_UP} delay={STAGGER_DELAYS.MEDIUM[3]}>
                                     <div className="hover:transform hover:scale-105 transition-transform duration-300">
                                     <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mb-4">
                                         <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -163,7 +163,7 @@ export default function Contact() {
                                         </a>
                                     </div>
                                     </div>
-                                </AnimatedEntrance>
+                                </AnimatedEntrance> */}
 
 
                             </div>
