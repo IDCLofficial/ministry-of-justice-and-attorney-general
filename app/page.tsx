@@ -165,7 +165,7 @@ export default function Home() {
             </p>
           </AnimatedEntrance>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8">
             {[
               { name: 'Nigerian Bar Association', logo: '/photos/nba-logo-1.png' },
               { name: 'Legal Aid Council', logo: '/photos/legal-aid-logo.png' },
@@ -180,7 +180,7 @@ export default function Home() {
                 className="flex items-center justify-center"
               >
                 <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-full flex items-center justify-center">
-                  <div className="relative w-32 h-20">
+                  <div className="relative w-24 sm:w-32 md:w-40 h-20">
                     <Image
                       src={partner.logo}
                       alt={partner.name}
