@@ -105,9 +105,6 @@ export default function About() {
                             <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-6 sm:mb-8">
                                 Under their leadership, the Ministry of Justice has prioritized judicial reforms, legal system modernization, and human rights protection. The Attorney General has been instrumental in driving policy changes that strengthen the state&apos;s legal framework and improve access to justice for all residents of Imo State.
                             </p>
-                            {/* <button className="bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base font-semibold transition-colors">
-                    Read Full Bio
-                </button> */}
                         </div>
                         <div className="order-1 lg:order-2">
                             <Image

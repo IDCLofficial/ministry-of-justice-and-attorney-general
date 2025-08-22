@@ -78,11 +78,6 @@ export default function Home() {
                   I invite you to explore our website to learn more about our services, ongoing projects, and how we are working to uphold the rule of law and protect the rights of all Imo citizens. Together, we can build a justice system that is fair, efficient, and accessible to all.&ldquo;
                 </p>
               </AnimatedEntrance>
-              {/* <AnimatedEntrance {...ANIMATION_PRESETS.BUTTON_SCALE_UP} delay={600}>
-                <button className="bg-[#4CAF50]/90 hover:bg-[#4CAF50] cursor-pointer text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:transform hover:scale-105 transition-all duration-300">
-                  Read Full Bio
-                </button>
-              </AnimatedEntrance> */}
             </div>
             <div className="flex-1 order-1 lg:order-2">
               <AnimatedEntrance {...ANIMATION_PRESETS.IMAGE_FADE_UP}>
