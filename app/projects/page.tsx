@@ -4,79 +4,102 @@ import AnimatedEntrance from "../../components/AnimatedEntrance";
 import { PROJECTS_STATISTICS } from "../../utils/constants/statistics";
 import { HERO_CONFIGS } from "../../utils/constants/heroSections";
 import { ANIMATION_PRESETS, STAGGER_DELAYS } from "../../utils/constants/animations";
-import { FaUsers, FaBuilding, FaGavel, FaHandshake, FaBook } from "react-icons/fa6";
 import Image from "next/image";
+import { contentfulService } from "@/utils/contentful";
+import { Project } from "@/utils/contentful/types";
+import Link from "next/link";
+import { Suspense } from "react";
+import ProjectsLoadingSkeleton from "./loading";
+import EmptyState from "../../components/EmptyState";
+import Pagination from "@/components/Pagination";
+import { slugify } from "@/utils";
 
-// Local Government project icons mapping
-const PROJECT_ICONS = {
-    1: FaUsers, // Traditional Rulers Registry
-    2: FaBuilding,   // Community Development
-    3: FaBuilding,    // Council Secretariats
-    4: FaHandshake, // Town Union Governance
-    5: FaGavel,    // Peacebuilding
-    6: FaGavel, // Traditional Rulers Installation
-    7: FaBook, // Civic Education
-    8: FaBuilding, // Rural Infrastructure
-    9: FaUsers, // Leadership Training
-    10: FaHandshake // Cultural Heritage
+interface DisplayProject {
+    id: string;
+    title: string;
+    description: string;
+    startDate: string;
+    endDate: string;
+    status: string;
+    partners: string;
+    src: string;
+}
+
+interface PageProps {
+    searchParams: Promise<{ [key: string]: string }>
+}
+
+const transformNewsData = (newsData: Project[]): DisplayProject[] => {
+    return newsData.map((news) => ({
+        id: news.sys.id,
+        title: news.fields.projectTitle,
+        description: (news.fields.projectDescription || '').slice(0, 100) + '...',
+        startDate: news.fields.startDate || '',
+        endDate: news.fields.proposedEndDate || '',
+        status: new Date(news.fields.proposedEndDate || '').getTime() > new Date().getTime() ? 'Ongoing' : 'Completed',
+        partners: news.fields.partners?.map((partner) => partner.fields.title).join(", ") || "",
+        src: news.fields.projectImage?.fields.file.url ? `https:${news.fields.projectImage?.fields.file.url}` : "",
+    }));
+}
+
+const fetchNewsData = async (page: string, ministryId: string) => {
+    try {
+        const newsData = await contentfulService.getProjectsByMinistryId(ministryId, parseInt(page));
+
+        if (!newsData) {
+            return { data: [], error: null };
+        }
+
+        console.log({
+            newsData: newsData[0],
+            ministryId,
+            page
+        });
+
+        const transformedNews = transformNewsData(newsData);
+        return { data: transformedNews, error: null };
+    } catch (error) {
+        console.error('Error fetching news data:', error);
+        return { data: [], error: error instanceof Error ? error.message : 'Failed to fetch projects' };
+    }
 };
 
-// Ministry of Justice projects
-const JUSTICE_PROJECTS = [
-    {
-        number: 1,
-        title: "Judiciary Automation Project",
-        description: "Ongoing digital transformation of court processes, including e-filing, digital case tracking, and improved data management to enhance transparency and efficiency.",
-        location: "Statewide",
-        category: "Digital Transformation",
-        status: "Ongoing",
-        partners: "ICT Department, Judiciary",
-        imageSrc: "/photos/judiciary-automation - Ministry of Justice.jpg",
-        
-    },
-    {
-        number: 2,
-        title: "Court Facilities Renovation",
-        description: "Rehabilitation of dilapidated court buildings and infrastructure across various judicial divisions to provide conducive environments for justice delivery.",
-        location: "Multiple Locations",
-        category: "Infrastructure",
-        status: "Ongoing",
-        partners: "Ministry of Works, Judiciary",
-        imageSrc: "/photos/court-facilities-renovation - Ministry of Justice.webp",
-    },
-    {
-        number: 3,
-        title: "Judicial Capacity Building",
-        description: "Continuous legal education and digital skills training for judicial officers and administrative staff to strengthen service delivery and professional development.",
-        location: "Statewide",
-        category: "Capacity Building",
-        status: "Ongoing",
-        partners: "Judicial Institute, NBA",
-        imageSrc: "/photos/judicial-capacity-building - Ministry of Justice.jpg",
-    },
-    {
-        number: 4,
-        title: "Customary Courts Expansion",
-        description: "Establishment and operationalization of more Customary Courts in underserved communities to improve access to grassroots justice and alternative dispute resolution.",
-        location: "Rural Communities",
-        category: "Access to Justice",
-        status: "Ongoing",
-        partners: "Local Governments, Traditional Rulers",
-        imageSrc: "/photos/customary-courts-expansion - Ministry of Justice.webp",
-    },
-    {
-        number: 5,
-        title: "Community Legal Awareness",
-        description: "Outreach programs focused on educating citizens about their legal rights, court procedures, and available legal aid services across Imo State.",
-        location: "Statewide",
-        category: "Public Education",
-        status: "Ongoing",
-        partners: "NGOs, Civil Society Organizations",
-        imageSrc: "/photos/community-legal-awareness - Ministry of Justice.jpg",
+const fetchProjectsCount = async (ministryId: string) => {
+    try {
+        const count = await contentfulService.getProjectsCountByMinistryId(ministryId);
+        return count;
+    } catch (error) {
+        console.error('Error fetching projects count:', error);
+        return 0;
     }
-];
+};
 
-export default function Projects() {
+
+export default async function Projects({ searchParams }: PageProps) {
+    const ministryId = process.env.NEXT_PUBLIC_MINISTRY_ID;
+
+    if (!ministryId) {
+        return <div>Ministry ID not found</div>
+    }
+    const { page } = await searchParams;
+
+    let pageString = page;
+    if (typeof page !== 'string') {
+        pageString = "1";
+    }
+
+    return (
+        <Suspense fallback={<ProjectsLoadingSkeleton />}>
+            <ProjectsContent page={pageString} ministryId={ministryId} />
+        </Suspense>
+    );
+}
+
+const ProjectsContent = async ({ page, ministryId }: { page: string, ministryId: string }) => {
+    const result = await fetchNewsData(page, ministryId);
+    const { data: projects, error } = result;
+    const projectsCount = await fetchProjectsCount(ministryId);
+
     return (
         <div className="min-h-screen bg-[#F7F8F9]">
             {/* Hero Section */}
@@ -84,7 +107,7 @@ export default function Projects() {
 
             {/* Statistics Section */}
             <StatisticsSection statistics={PROJECTS_STATISTICS} className="" />
-            
+
             {/* Projects Description */}
             <section className="py-12 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
@@ -98,62 +121,81 @@ export default function Projects() {
             </section>
 
             {/* Projects Grid */}
-            <section className="pb-16 bg-white">
+            <section className="py-16 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {JUSTICE_PROJECTS.map((project, index) => {
-                            return (
-                                <AnimatedEntrance 
-                                    key={project.number} 
-                                    {...ANIMATION_PRESETS.CARD_FADE_UP} 
-                                    delay={STAGGER_DELAYS.MEDIUM[index % STAGGER_DELAYS.MEDIUM.length]}
-                                >
-                                    <div className="bg-white border border-gray-200 h-full rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
-                                        <div className="h-48 bg-green-50 flex items-center justify-center overflow-hidden">
-                                            <Image
-                                                src={project.imageSrc || '/assets/no-image-lg.jpg'}
-                                                alt={project.title}
-                                                width={400}
-                                                height={200}
-                                                className="object-cover w-full h-full"
-                                            />
-                                        </div>
-                                        <div className="p-6">
-                                            <h3 className="text-lg font-bold text-gray-900 mb-4">
-                                                {project.title}
-                                            </h3>
-                                            <div className="space-y-3 text-sm">
-                                                <div className="flex justify-between gap-4">
-                                                    <span className="text-gray-600">Category</span>
-                                                    <span className="text-gray-900 text-right">{project.category}</span>
+                    {error || projectsCount === 0 ? (
+                        <div className="flex justify-center">
+                            <div className="max-w-5xl w-full">
+                                <EmptyState type="no-content" />
+                            </div>
+                        </div>
+                    ) : !!projectsCount && projects.length === 0 ? (
+                        <div className="flex justify-center">
+                            <div className="max-w-5xl w-full">
+                                <EmptyState btnLink="/projects" type="page-no-content" />
+                            </div>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="grid grid-cols-1 h-fit md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {projects && projects.map((project, index) => {
+                                    return (
+                                        <AnimatedEntrance
+                                            key={project.id}
+                                            {...ANIMATION_PRESETS.CARD_FADE_UP}
+                                            delay={STAGGER_DELAYS.MEDIUM[index % STAGGER_DELAYS.MEDIUM.length]}
+                                        >
+                                            <div className="bg-white border group cursor-pointer border-gray-200 h-full rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
+                                                <Link href={`/projects/${slugify(project.title)}?id=${project.id}`} className="absolute inset-0 h-full w-full z-10" />
+                                                <div className="h-48 bg-green-50 flex items-center justify-center overflow-hidden">
+                                                    <Image
+                                                        src={project.src || '/assets/no-image.png'}
+                                                        alt={project.title}
+                                                        width={400}
+                                                        height={200}
+                                                        className="object-cover"
+                                                    />
                                                 </div>
-                                                <div className="flex justify-between gap-4">
-                                                    <span className="text-gray-600">Status</span>
-                                                    <span className={`font-medium text-right ${
-                                                        project.status === "Active" ? "text-blue-600" :
-                                                        project.status === "In Progress" ? "text-yellow-600" :
-                                                        project.status === "Completed" ? "text-green-600" :
-                                                        project.status === "Ongoing" ? "text-orange-600" : ""
-                                                    }`}>{project.status}</span>
-                                                </div>
-                                                <div className="flex justify-between gap-4">
-                                                    <span className="text-gray-600">Partners</span>
-                                                    <span className="text-gray-900 text-right">{project.partners}</span>
+                                                <div className="p-6">
+                                                    <h3 className="text-lg font-bold text-gray-900 mb-4 group-hover:text-green-600">
+                                                        {project.title}
+                                                    </h3>
+                                                    <div className="space-y-3 text-sm">
+                                                        <div className="flex justify-between gap-4">
+                                                            <span className="text-gray-600">Start date</span>
+                                                            <span className="text-gray-900 text-right">{project.startDate}</span>
+                                                        </div>
+                                                        <div className="flex justify-between gap-4">
+                                                            <span className="text-gray-600">End date</span>
+                                                            <span className="font-medium text-right">{project.endDate}</span>
+                                                        </div>
+                                                        {project.partners && <div className="flex justify-between gap-4">
+                                                            <span className="text-gray-600">Partners</span>
+                                                            <span className="text-gray-900 text-right">{project.partners}</span>
+                                                        </div>}
+                                                    </div>
+                                                    <p className="text-gray-600 text-sm mt-4 leading-relaxed">
+                                                        {project.description}
+                                                    </p>
+                                                    <div className="flex items-center mt-4 text-green-600 text-sm">
+                                                        <span className={`w-2 h-2 rounded-full mr-2 ${project.status === "Ongoing" ? "bg-green-500" : "bg-gray-500"}`}></span>
+                                                        {project.status}
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <p className="text-gray-600 text-sm mt-4 leading-relaxed">
-                                                {project.description}
-                                            </p>
-                                            <div className="flex items-center mt-4 text-green-600 text-sm">
-                                                <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                                                {project.location}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </AnimatedEntrance>
-                            );
-                        })}
-                    </div>
+                                        </AnimatedEntrance>
+                                    );
+                                })}
+                            </div>
+                            <Pagination
+                                currentPage={parseInt(page)}
+                                totalCount={projectsCount}
+                                pageSize={10}
+                                className="mt-10"
+                                type="projects"
+                            />
+                        </>
+                    )}
                 </div>
             </section>
         </div>
