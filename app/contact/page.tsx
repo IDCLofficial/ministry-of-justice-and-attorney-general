@@ -12,15 +12,18 @@ export default function Contact() {
         email: "",
         subject: "",
         message: "",
+        notRobot: false,
     });
     const [errors, setErrors] = useState<
-        Partial<Record<"name" | "company" | "phone" | "email" | "subject" | "message", string>>
+        Partial<Record<"name" | "company" | "phone" | "email" | "subject" | "message" | "notRobot", string>>
     >({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = useCallback(
         (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-            const { name, value } = e.target;
+            const { name, type } = e.target;
+            const value = type === 'checkbox' ? (e.target as HTMLInputElement).checked : e.target.value;
+            
             setFormValues((prev) => ({ ...prev, [name]: value }));
             if (errors[name as keyof typeof errors]) {
                 setErrors((prev) => {
@@ -41,6 +44,7 @@ export default function Contact() {
         if (values.phone && !/^[\d\s()+-]{7,20}$/.test(values.phone)) nextErrors.phone = "Enter a valid phone";
         if (!values.subject.trim()) nextErrors.subject = "Subject is required";
         if (!values.message.trim() || values.message.trim().length < 10) nextErrors.message = "Message should be at least 10 characters";
+        if (!values.notRobot) nextErrors.notRobot = "Please confirm you are not a robot";
         return nextErrors;
     }, []);
 
@@ -57,7 +61,7 @@ export default function Contact() {
             try {
                 await new Promise((resolve) => setTimeout(resolve, 1200));
                 toast.success("Message sent successfully!");
-                setFormValues({ name: "", company: "", phone: "", email: "", subject: "", message: "" });
+                setFormValues({ name: "", company: "", phone: "", email: "", subject: "", message: "", notRobot: false });
                 setErrors({});
             } finally {
                 setIsSubmitting(false);
@@ -172,7 +176,7 @@ export default function Contact() {
                         {/* Right Column - Contact Form */}
                         <AnimatedEntrance {...ANIMATION_PRESETS.CARD_FADE_UP} delay={400}>
                             <div className="bg-white rounded-lg lg:p-8 p-4 shadow-sm hover:shadow-lg transition-shadow duration-300">
-                            <form onSubmit={handleSubmit} noValidate className="space-y-6">
+                            <form onSubmit={handleSubmit} method="POST" className="space-y-6">
                                 <h3 className="text-2xl font-bold text-gray-900 mb-4">SEND US A MESSAGE</h3>
                                 <div>
                                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -276,12 +280,23 @@ export default function Contact() {
                                     ></textarea>
                                     {errors.message && <p id="message-error" className="mt-2 text-sm text-red-600">{errors.message}</p>}
                                 </div>
+                                <div>
                                 <div className="flex items-center">
-                                    <input type="checkbox" required id="not-robot" name="not-robot" className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded" />
+                                    <input
+                                        type="checkbox"
+                                        required
+                                        id="not-robot"
+                                        name="notRobot"
+                                        className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                                        onChange={handleChange}
+                                        checked={formValues.notRobot}
+                                    />
                                     <label htmlFor="not-robot" className="ml-2 block text-sm text-gray-700">
                                         I&apos;m not a robot
                                     </label>
                                 </div>
+                                {errors.notRobot && <p id="not-robot-error" className="mt-2 text-sm text-red-600">{errors.notRobot}</p>}
+                            </div>
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}

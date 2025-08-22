@@ -53,6 +53,6 @@ export const MINISTRY_INFO = {
 export const CONTACT_INFO = {
   address: "Justice Oputa High Court Complex, New Owerri (off Port-Harcourt Road), Owerri",
   phone: "+2347046242007",
-  email: "info@imojudiciary.gov.ng",
+  email: "info@justice.im.gov",
   workingHours: "Monday - Friday: 8:00 AM - 4:00 PM"
 };
