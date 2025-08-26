@@ -123,7 +123,6 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({
     };
 
     const suggestionsOnClick = async (suggestion: SearchSuggestion) => {
-        console.log(suggestion.slug);
         router.push(`/news/${suggestion.slug}`);
     };
 

@@ -18,9 +18,7 @@ export const SearchSection = async () => {
     try {
         // Fetch blogs by ministry for suggestions
         const blogs = await contentfulService.getBlogTitlesAndSlugsByMinistryId(ministryId);
-
-        console.log(blogs);
-        
+                
         // Transform to SearchSuggestion format
         const suggestions: SearchSuggestion[] = blogs.map((blog, index) => ({
             id: `${slugify(blog.slug)}-${index}`,

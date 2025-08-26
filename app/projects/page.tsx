@@ -50,12 +50,6 @@ const fetchNewsData = async (page: string, ministryId: string) => {
             return { data: [], error: null };
         }
 
-        console.log({
-            newsData: newsData[0],
-            ministryId,
-            page
-        });
-
         const transformedNews = transformNewsData(newsData);
         return { data: transformedNews, error: null };
     } catch (error) {
